@@ -17,36 +17,30 @@ namespace SauceDemoTests.Tests
         [Test]
         public void TestInventoryDisplay()
         {
-            var inventoryPage = new InventoryPage(driver);
             Assert.That(inventoryPage.IsInventoryDisplayed(), Is.True);
         }
 
         [Test]
         public void TestAddToCartByIndex()
         {
-            var inventoryPage = new InventoryPage(driver);
             inventoryPage.AddToCartByIndex(1);
             inventoryPage.ClickCartLink();
 
-            var cartPage = new CartPage(driver);
             Assert.That(cartPage.IsCartItemDisplayed(), Is.True);
         }
 
         [Test]
         public void TestAddToCartByName()
         {
-            var inventoryPage = new InventoryPage(driver);
             inventoryPage.AddToCartByName("Sauce Labs Bolt T-Shirt");
             inventoryPage.ClickCartLink();
 
-            var cartPage = new CartPage(driver);
             Assert.That(cartPage.IsCartItemDisplayed(), Is.True);
         }
 
         [Test]
         public void TestPageTitle()
         {
-            var inventoryPage = new InventoryPage(driver);
 
             Assert.That(inventoryPage.IsPageLoaded(), Is.True);
         }

@@ -14,7 +14,6 @@ namespace SauceDemoTests.Tests
         {
             Login("standard_user", "secret_sauce");
 
-            var inventoryPage = new InventoryPage(driver);
             inventoryPage.AddToCartByIndex(1);
             inventoryPage.ClickCartLink();
         }
@@ -22,7 +21,6 @@ namespace SauceDemoTests.Tests
         [Test]
         public void TestCartItemDisplayed()
         {
-            var cartPage = new CartPage(driver);
 
             Assert.That(cartPage.IsCartItemDisplayed, Is.True);
         }
@@ -30,12 +28,10 @@ namespace SauceDemoTests.Tests
         [Test]
         public void TestClickCheckout()
         {
-            var cartPage = new CartPage(driver);
 
             cartPage.ClickCheckout();
-
-            //TODO Use checkout page to do this assertion
-            Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/checkout-step-one.html"));
+            
+            Assert.That(checkoutPage.IsPageLoaded, Is.True);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace SauceDemoTests.Tests
         {
             Login("standard_user", "secret_sauce");
 
-            var inventoryPage = new InventoryPage(driver);
             Assert.That(inventoryPage.IsPageLoaded, Is.True, "Login was not succsessful");
         }
 
@@ -23,7 +22,6 @@ namespace SauceDemoTests.Tests
         {
             Login("Invalid", "Invalid");
 
-            var loginPage = new LoginPage(driver);
             string errorMessage = loginPage.GetErrorMessage();
 
             Assert.That(errorMessage, Is.EqualTo("Epic sadface: Username and password do not match any user in this service"), "User was able to log in");
@@ -34,7 +32,6 @@ namespace SauceDemoTests.Tests
         {
             Login("locked_out_user", "secret_sauce");
 
-            var loginPage = new LoginPage(driver);
             string errorMessage = loginPage.GetErrorMessage();
 
             Assert.That(errorMessage, Is.EqualTo("Epic sadface: Sorry, this user has been locked out."));
